@@ -1,29 +1,24 @@
 const express = require('express');
 const router = express.Router();
 
+const {post_to_db, get_all_products_from_db , get_product_by_id, delete_product_by_id} = require('../controller/product');
+
 // GET all products
-router.get('/', (req, res) => {
-    res.send("ALL Products have been fetched");
-});
+router.get('/', get_all_products_from_db);
 
 // GET product by id
-router.get('/:id', (req,res) => {
-    res.send("Product has been fetched with id = " + req.params.id);
-});
+router.get('/:id', get_product_by_id);
 
 // POST one product
-router.post('/', (req, res) => {
- 
-    res.send("One product has been posted.");
-});
+router.post('/', post_to_db);
 
-// POST multiple products
+// TODO POST multiple products
 router.post('/multiple', (req, res) => {
     console.log(req.body);
     res.send("Multiple products have been posted");
 });
 
-// UPDATE one product
+// TODO UPDATE one product
 router.patch('/:id', (req, res) => {
     res.send(`Product with id = ${req.params.id} has been updated`);
 });
@@ -31,8 +26,6 @@ router.patch('/:id', (req, res) => {
 // TODO: UPDATE multiple product
 
 // DELETE ONE PRODUCT
-router.delete('/:id', (req, res) => {
-    res.send(`Product with id ${req.params.id} has been deleted`);
-});
+router.delete('/:id', delete_product_by_id)
 
 module.exports = router;
