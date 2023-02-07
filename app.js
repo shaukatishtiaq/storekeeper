@@ -32,3 +32,6 @@ database.once('connected', () => {
 const product = require('./routes/product');
 app.use('/product', product);
 
+const  order = require('./routes/order');
+app.use('/order', order);
+
