@@ -6,6 +6,7 @@ async function post_to_db(req,res,next) {
     const data = new Product({
         batch_no : req.body.batch_no,
         name : req.body.name,
+        brand :req.body.brand,
         cost_price : req.body.cost_price,
         selling_price : req.body.selling_price,
         quantity : req.body.quantity

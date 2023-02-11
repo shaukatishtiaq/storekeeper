@@ -1,10 +1,19 @@
 const mongoose = require('mongoose');
 
 const product_schema = new mongoose.Schema({
-    batch_no : Number,
+    batch_no : {
+        type : Number,
+        required : true
+    },
     name : {
         type : String,
+        required : true,
         lowercase : true
+    },
+    brand: {
+        type: String,
+        required : true,
+        lowercase: true
     },
     cost_price: {
         type: Number,
@@ -18,6 +27,7 @@ const product_schema = new mongoose.Schema({
     },
     quantity : {
         type : Number,
+        required : true,
         min : 0
     }
 });
