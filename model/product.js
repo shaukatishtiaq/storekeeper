@@ -20,7 +20,7 @@ const product_schema = new mongoose.Schema({
         required: true,
         min : 0
     },
-    selling_price: {
+    mrp: {
         type: Number,
         required: true,
         min : 0

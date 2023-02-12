@@ -8,7 +8,7 @@ async function post_to_db(req,res,next) {
         name : req.body.name,
         brand :req.body.brand,
         cost_price : req.body.cost_price,
-        selling_price : req.body.selling_price,
+        mrp : req.body.mrp,
         quantity : req.body.quantity
     });
 
