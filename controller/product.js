@@ -20,7 +20,7 @@ async function post_to_db(req,res,next) {
         console.error(error);
         res.status(400).json({message: error.message});
     };
-};
+}
 
 // TODO: post_products_to_db
 
@@ -28,13 +28,18 @@ async function get_all_products_from_db(req,res,next) {
     try {
         
         const data = await Product.find();
-        // TODO: if data.length == 0 , then send different response
-        res.json(data);
+        
+        if(data.length === 0) {
+            res.json({message : "DB is empty."});
+        }
+        else {
+            res.json(data);
+        }
     } catch(error) {
         console.log(error);
         res.status(500).json({message : error.message});
     };
-};
+}
 
 async function get_product_by_id(req, res,next) {
     try {
@@ -50,7 +55,7 @@ async function get_product_by_id(req, res,next) {
         console.error(error);
         res.status(500).json({message: error.message});
     };
-};
+}
 
 async function delete_product_by_id(req, res, next) {
     
@@ -64,7 +69,7 @@ async function delete_product_by_id(req, res, next) {
         res.status(400).json({message : error.message});
     };
     
-};
+}
 
 // TODO
 // function update_product_by_id(req, res, next) {

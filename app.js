@@ -13,6 +13,7 @@ app.use((req, res,next) => {
     console.log(`IP = ${req.ip} \n Method = ${req.method} \n Request = ${req.url}`);
     next();
 });
+
 // Database configuration
 mongoose.set('strictQuery', false);
 mongoose.connect(process.env.DATABASE_URL).catch((error) => {

@@ -1,13 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-router.post('/', (req,res) => {
-    res.send("Order has been posted.");
-});
+const {post_order_to_db, get_all_orders_from_db} = require('../controller/order');
 
-router.get('/', (req, res) => {
-    res.send("All orders have been fetched.");
-});
+router.post('/', post_order_to_db);
+
+router.get('/', get_all_orders_from_db);
 
 router.get('/:id', (req,res) => {
     res.send(`Order with id ${req.params.id} has been fetched`);
