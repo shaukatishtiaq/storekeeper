@@ -9,10 +9,10 @@ const body_parser = require('body-parser');
 app.use(body_parser.json());
 
 app.use((req, res,next) => {
-    console.log("LOGGER");
+    console.log("\n\n--------LOGGER-------");
     console.log(`IP = ${req.ip} \n Method = ${req.method} \n Request = ${req.url}`);
     next();
-})
+});
 // Database configuration
 mongoose.set('strictQuery', false);
 mongoose.connect(process.env.DATABASE_URL).catch((error) => {
@@ -34,4 +34,3 @@ app.use('/product', product);
 
 const  order = require('./routes/order');
 app.use('/order', order);
-
