@@ -44,12 +44,12 @@ async function get_all_products_from_db(req,res,next) {
 async function get_product_by_id(req, res,next) {
     try {
         const data = await Product.findById(req.params.id);
-        
-        // if(data === null) {
-        //     console.log("null");
-        // }
-        
-        res.json(data);
+        if(data === null) {
+            res.json({message : "No product with sent id was found"});
+        }
+        else {
+            res.json(data);
+        }
 
     }catch(error) {
         console.error(error);
@@ -58,12 +58,14 @@ async function get_product_by_id(req, res,next) {
 }
 
 async function delete_product_by_id(req, res, next) {
-    
-    try {
-        
+    try { 
         const data = await Product.findByIdAndDelete(req.params.id);
-        res.json(data);
-    
+        if(data === null) {
+            res.json({message : "The item you are trying to access isn't in the database."});
+        }
+        else {
+            res.json({message : "Product has been deleted."});
+        }
     }catch(error) {
         console.error(error);
         res.status(400).json({message : error.message});
