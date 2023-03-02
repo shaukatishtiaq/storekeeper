@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const {post_to_db, get_all_products_from_db , get_product_by_id, delete_product_by_id} = require('../controller/product');
+const { post_to_db, get_all_products_from_db, get_product_by_id, delete_product_by_id, update_product_by_id } = require('../controller/product');
 
 // GET all products
 router.get('/', get_all_products_from_db);
@@ -19,9 +19,7 @@ router.post('/multiple', (req, res) => {
 });
 
 // TODO UPDATE one product
-router.patch('/:id', (req, res) => {
-    res.send(`Product with id = ${req.params.id} has been updated`);
-});
+router.patch('/:id', update_product_by_id);
 
 // TODO: UPDATE multiple product
 
